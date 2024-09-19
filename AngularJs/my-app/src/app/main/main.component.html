@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <mat-toolbar-row class="menu-center">
+    <span style="width: 200px;">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+    <span style="width: auto;">
+      <a [routerLink]="['/']"><button mat-button>Home</button></a>
+    </span>
+    <span style="width: 200px;display: flex;justify-content: right;">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item (click)="LogOut()">Log out</button>
+      </mat-menu>
+    </span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet #outlet="outlet"></router-outlet>

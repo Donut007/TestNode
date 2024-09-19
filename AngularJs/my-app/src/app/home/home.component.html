@@ -1,0 +1,15 @@
+<mat-sidenav-container autosize style="height: 100%">
+  <mat-sidenav #sider [opened]="true" mode="side" style="width: 250px">
+    <mat-nav-list>
+      @for (item of MenuSourse; track item.name) {
+        <app-menu-item [item]="item" [isCollape]="sider.opened"></app-menu-item>
+      }
+        
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 100%; background-color: rgb(97, 97, 97)">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

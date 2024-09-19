@@ -1,0 +1,12 @@
+mat-nav-list a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  /* .textItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  } */

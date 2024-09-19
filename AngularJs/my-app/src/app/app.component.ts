@@ -1,6 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, HostListener, inject, NgModule, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DataService } from './data.service';
+import { HomeComponent } from "./home/home.component";
+import { LoginUserComponent } from "./login-user/login-user.component";
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 // import { CommonModule } from '@angular/common';
 // import { collection, Firestore, getDocs } from 'firebase/firestore';
 
@@ -8,29 +10,25 @@ import { DataService } from './data.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HomeComponent, LoginUserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+
 export class AppComponent implements OnInit {
+  title = 'my-app'
 
-  data: any[] = [];
-  title: string = ""
-  // firestore = inject(Firestore);
-  
-  constructor(private dataService: DataService) { }
+  constructor() {
 
-  ngOnInit(): void {
-    this.title = 'my-app';
-    // getDocs(collection(this.firestore, "testPath")).then((response) => {
-    //   console.log(response.docs)
-    // })
-    // this.dataService.getData().subscribe((data: any[]) => {
-    //   this.data = data;
-    //   this.title = 'my-app';
-    // });
+    
   }
+  ngOnInit(): void {
+
+
+  }
+  
+
+
+
 }
-// export class AppComponent {
-//   title = 'my-app';
-// }

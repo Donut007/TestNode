@@ -1,0 +1,120 @@
+<div class="container-fluid rowGap py-2" style="background-color: rgb(177, 174, 184)">
+  <div #section_card class="row" style="margin-top: 0px;">
+    <div class="gap-2 d-flex flex-row">
+      <div class="card_Box" style="background-color: rgb(255, 213, 213)">
+        <div class="card_head">
+          จำนวนบุคลากร
+        </div>
+        <div class="card_main">
+          1,000
+        </div>
+        <div class="card_foot">
+          คน
+        </div>
+      </div>
+      <div class="card_Box" style="background-color: rgb(230, 255, 221)"></div>
+      <div class="card_Box" style="background-color: rgb(226, 234, 255)"></div>
+      <div class="card_Box" style="background-color: rgb(255, 230, 247)"></div>
+    </div>
+  </div>
+
+  <div #section_graph class="row">
+    <div class="col-6">
+      <div class="bg-white">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [title]="chartOptions.title"
+        ></apx-chart>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="bg-white">
+        <apx-chart
+          [series]="donutOptions.series"
+          [chart]="donutOptions.chart"
+          [title]="donutOptions.title"
+          [labels]="donutOptions.labels"
+          [legend]="donutOptions.legend"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+
+  <div #section_table class="row">
+    <div class="col">
+    <table
+      mat-table
+      matSort
+      (matSortChange)="announceSortChange($event)"
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by number"
+        >
+          No.
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by name"
+        >
+          Name
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by weight"
+        >
+          Weight
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+          sortActionDescription="Sort by symbol"
+        >
+          Symbol
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+  </div>
+</div>

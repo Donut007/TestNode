@@ -1,0 +1,28 @@
+<a
+  mat-list-item
+  (click)="isExpand = !isExpand"
+  [routerLink]="item.subMenu ? [] : [item.route]"
+  routerLinkActive="active-link"
+>
+  <span class="entry">
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span>{{ item.name }}</span>
+  </span>
+  @if (item.subMenu) {
+  <span matListItemMeta>
+    <mat-icon>{{ isExpand ? "expand_less" : "expand_more" }}</mat-icon>
+  </span>
+  }
+</a>
+
+<div [@collapseAnimation]="isExpand ? 'expanded' : 'collapsed'">
+  @if (item.subMenu) {
+  <div class="Submenu" [class.ToCollape]="isCollape">
+    <mat-nav-list class="p-0">
+      @for (items of item.subMenu; track items.name) {
+      <app-menu-item [item]="items"></app-menu-item>
+      }
+    </mat-nav-list>
+  </div>
+  }
+</div>
